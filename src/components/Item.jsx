@@ -7,11 +7,12 @@ import {
   RadioButtonUnchecked,
 } from "@mui/icons-material";
 
-function Item({ text }) {
+function Item({ text, completed }) {
   return (
     <ListItem>
       <div className="d-flex item">
         <Checkbox
+          checked={completed}
           icon={<RadioButtonUnchecked />}
           checkedIcon={<CheckCircle />}
         />

@@ -2,7 +2,7 @@ import React from "react";
 import { Add, CheckCircle, RadioButtonUnchecked } from "@mui/icons-material";
 import { Button, Checkbox, TextField } from "@mui/material";
 
-function AddFeild() {
+function AddFeild({ onClick }) {
   return (
     <div className="field">
       <Checkbox
@@ -14,10 +14,10 @@ function AddFeild() {
         placeholder="Введите текст задачи"
         variant="standard"
         sx={{
-          "& > :not(style)": {width: "300px" },
+          "& > :not(style)": { width: "300px" },
         }}
       />
-      <Button>
+      <Button onClick={onClick}>
         <Add />
       </Button>
     </div>
