@@ -8,9 +8,9 @@ function reducer(state, action) {
     return [
       ...state,
       {
-        id: 3,
-        text: "3 задача",
-        completed: true,
+        id: state[state.length - 1].id + 1,
+        text: action.payload.text,
+        completed: action.payload.checked,
       },
     ];
   }
@@ -31,9 +31,13 @@ function App() {
     },
   ]);
 
-  const addTask = () => {
+  const addTask = (text, checked) => {
     dispatch({
       type: "ADD_TASK",
+      payload: {
+        text,
+        checked,
+      },
     });
   };
   return (
@@ -42,7 +46,7 @@ function App() {
         <Paper className="header" elevation={0}>
           <h4>Список задача</h4>
         </Paper>
-        <AddFeild onClick={addTask} />
+        <AddFeild onAdd={addTask} />
         <Divider />
         <Tabs value={0}>
           <Tab label="Все" />
