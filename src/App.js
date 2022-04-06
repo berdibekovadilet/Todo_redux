@@ -3,12 +3,7 @@ import { Button, Divider, List, Paper, Tab, Tabs } from "@mui/material";
 import AddFeild from "./components/AddFeild";
 import Item from "./components/Item";
 import { useSelector, useDispatch } from "react-redux";
-
-const filterIndex = {
-  all: 0,
-  active: 1,
-  completed: 2,
-};
+import Filter from "./components/Filter";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,14 +49,6 @@ function App() {
     }
   };
 
-  const setFilter = (_, newIndex) => {
-    const status = Object.keys(filterIndex)[newIndex];
-    dispatch({
-      type: "SET_FILTER",
-      payload: status,
-    });
-  };
-
   return (
     <div className="App">
       <Paper className="wrapper">
@@ -70,11 +57,7 @@ function App() {
         </Paper>
         <AddFeild onAdd={addTask} />
         <Divider />
-        <Tabs onChange={setFilter} value={filterIndex[state.filterBy]}>
-          <Tab label="Все" />
-          <Tab label="Активные" />
-          <Tab label="Завершенные" />
-        </Tabs>
+        <Filter />
         <Divider />
         <List>
           {state.tasks
