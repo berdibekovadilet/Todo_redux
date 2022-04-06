@@ -7,7 +7,7 @@ import {
   RadioButtonUnchecked,
 } from "@mui/icons-material";
 
-function Item({ text, completed }) {
+function Item({ text, completed, onClickRemove, onClickCheckBox  }) {
   return (
     <ListItem>
       <div className="d-flex item">
@@ -15,13 +15,14 @@ function Item({ text, completed }) {
           checked={completed}
           icon={<RadioButtonUnchecked />}
           checkedIcon={<CheckCircle />}
+          onChange={onClickCheckBox}
         />
         <Typography className="item-text">{text}</Typography>
         <div className="item-buttons d-flex">
           <IconButton>
             <Edit style={{ fontSize: 20 }} />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={onClickRemove}>
             <DeleteOutline style={{ fontSize: 20 }} />
           </IconButton>
         </div>
